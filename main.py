@@ -1,12 +1,12 @@
-def on_hit_wall(sprite, location):
-    sprites.destroy(Tacos_Malvados)
-    info.change_life_by(-1)
-scene.on_hit_wall(SpriteKind.food, on_hit_wall)
-
 def on_on_overlap(sprite2, otherSprite):
     sprites.destroy(otherSprite)
     info.change_score_by(1)
 sprites.on_overlap(SpriteKind.player, SpriteKind.food, on_on_overlap)
+
+def on_hit_wall(sprite, location):
+    sprites.destroy(Tacos_Malvados)
+    info.change_life_by(-1)
+scene.on_hit_wall(SpriteKind.food, on_hit_wall)
 
 Tacos_Malvados: Sprite = None
 game.splash("Jogo dos tacos")
@@ -59,5 +59,5 @@ def on_update_interval():
         """),
         SpriteKind.food)
     Tacos_Malvados.set_position(randint(10, 145), 5)
-    Tacos_Malvados.set_velocity(0, 20)
+    Tacos_Malvados.set_velocity(0, 10)
 game.on_update_interval(500, on_update_interval)
